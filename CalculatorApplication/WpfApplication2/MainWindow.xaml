@@ -1,0 +1,31 @@
+﻿<Window x:Class="WpfApplication2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="355" Width="525">
+    <Grid>
+        <TextBox Name="display" Margin="50,10,50,260">=</TextBox>
+        <Button Name="one" Click="one_Click" Margin="50,80,415,190">1</Button>
+        <Button Name="two" Click="two_Click" Margin="150,80,315,190">2</Button>
+        <Button Name="three" Click="three_Click"  Margin="250,80,215,190">3</Button>
+        <Button Name="four" Click="four_Click" Margin="50,140,415,130">4</Button>
+        <Button Name="five" Click="five_Click" Margin="150,140,315,130">5</Button>
+        <Button Name="six" Click="six_Click" Margin="250,140,215,130">6</Button>
+        <Button Name="seven" Click="seven_Click" Margin="50,200,415,70">7</Button>
+        <Button Name="eight" Click="eight_Click" Margin="150,200,315,70">8</Button>
+        <Button Name="nine" Click="nine_Click" Margin="250,200,215,70">9</Button>
+        <Button Name="decimal" Click="decimal_Click" Margin="50,260,415,10">.</Button>
+        <Button Name="zero" Click="zero_Click" Margin="150,260,315,10">0</Button>
+        <Button Name="clear" Click="clear_Click" Margin="250,260,215,10">c</Button>
+
+        <Button Name="add" Click="add_Click" Margin="350,80,115,190">+</Button>
+        <Button Name="subtract" Click="subtract_Click" Margin="350,140,115,130">-</Button>
+        <Button Name="multiply" Click="multiply_Click" Margin="350,200,115,70">x</Button>
+        <Button Name="divide" Click="divide_Click" Margin="350,260,115,10">/</Button>
+
+        <Button Name="equals" Click="equals_Click" Margin="450,80,15,10">=</Button>
+    </Grid>
+</Window>
