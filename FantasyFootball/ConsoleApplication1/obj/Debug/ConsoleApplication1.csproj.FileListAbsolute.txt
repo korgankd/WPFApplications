@@ -1,6 +1,0 @@
-c:\users\korga_000\documents\visual studio 2015\Projects\FantasyFootball\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
-C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
-C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
-C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
-C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
-C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
