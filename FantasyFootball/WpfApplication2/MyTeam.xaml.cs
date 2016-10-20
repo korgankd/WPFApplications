@@ -53,7 +53,7 @@ namespace WpfApplication2
 
         private void draft_Click(object sender, RoutedEventArgs e)
         {
-            var page = new Draft(LG,TID);
+            var page = new Draft(LG);
             page.Show();
             this.Close();
         }

@@ -37,7 +37,7 @@ namespace WpfApplication2
                 teams[i] = new Team(teamNames[i], tids[i], this, con);
             }
 
-            sql = "SELECT COUNT(*) FROM Rosters WHERE LID=" + leagueID + ";";
+            sql = "SELECT COUNT(*) FROM Rosters;";
             command = new SqlCommand(sql, con);
             pickNum = (int)command.ExecuteScalar();
         }
@@ -67,7 +67,6 @@ namespace WpfApplication2
             for (int i = 0; i < 150; i++)
             {
                 pick[i] = j;
-
                 if (snake)
                 {
                     j--;
@@ -76,7 +75,7 @@ namespace WpfApplication2
                 {
                     j++;
                 }
-                if (j == firstTID + 11)
+                if (j == firstTID + 10)
                 {
                     j--;
                     snake = true;
@@ -98,6 +97,11 @@ namespace WpfApplication2
         public int getPickTID()
         {
             return draftOrder[pickNum];
+        }
+
+        public void playerDrafted()
+        {
+            pickNum++;
         }
     }
 }

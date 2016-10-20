@@ -22,6 +22,7 @@ namespace WpfApplication2
             InitializeComponent();
             LG = lg;
             TID = lg.getPickTID();
+            int[] x = LG.setDraftOrder(2);
             fillTeam();
         }
 
@@ -162,6 +163,8 @@ namespace WpfApplication2
                     MessageBox.Show("Drafted Player Successful");
                 }
                 reader.Close();
+                TID = LG.getPickTID();
+                fillTeam();
             }
             else
                 MessageBox.Show("Drafted Player Unsuccessful");

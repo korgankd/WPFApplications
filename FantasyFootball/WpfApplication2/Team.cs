@@ -14,7 +14,7 @@ namespace WpfApplication2
         Player QB, RB1, RB2, WR1, WR2, TE, FLEX, DST, K;
         Player[] bench = new Player[6];
         Player[] roster = new Player[15];
-        League lg;
+        League LG;
 
         public Team(string Name)
         {
@@ -25,8 +25,8 @@ namespace WpfApplication2
         {
             teamName = Name;
             TID = tid;
-            lg = league;
-            LID = lg.getLID();
+            LG = league;
+            LID = LG.getLID();
             string[] names = new string[15];
             string[] positions = new string[15];
             string sql = "SELECT PlayerName, Position FROM Rosters WHERE TID=" + tid + ";";
@@ -77,6 +77,7 @@ namespace WpfApplication2
                 if (roster[i].getName() == "Empty")
                 {
                     roster[i] = p;
+                    LG.playerDrafted();
                     return true;
                 }
             }
