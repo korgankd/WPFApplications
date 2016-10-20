@@ -18,3 +18,5 @@ C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\WpfAppl
 C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\WpfApplication2\obj\Debug\MyTeam.baml
 C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\WpfApplication2\obj\Debug\MyTeamWindow.g.cs
 C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\WpfApplication2\obj\Debug\MyTeamWindow.baml
+C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\WpfApplication2\obj\Debug\Draft.g.cs
+C:\Users\korga_000\Documents\Visual Studio 2015\Projects\FantasyFootball\WpfApplication2\obj\Debug\Draft.baml

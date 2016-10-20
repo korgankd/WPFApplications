@@ -20,49 +20,42 @@ namespace WpfApplication2
     /// </summary>
     public partial class MyTeam : Window
     {
+        int LID = 0;
+        int TID = 0;
+        League LG;
         public MyTeam()
         {
             InitializeComponent();
         }
-
-        public MyTeam(int tid)
+        
+        public MyTeam(League lg, int tid)
         {
+            LG = lg;
+            TID = tid;
             InitializeComponent();
-            fillTeam(tid);
+            fillTeam();
         }
         
-
-        public void fillTeam(int tid)
+        public void fillTeam()
         {
-            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
-            con.Open();
-            //string sql = "SELECT * FROM League WHERE LID=" + tid + ";";
-            //SqlCommand command = new SqlCommand(sql, con);
-            //SqlDataReader reader = command.ExecuteReader();
-            int lid = 2;
-            //int lid = (int)reader.GetValue(1);
-            //MessageBox.Show("" + reader.GetValue(0));
+            teamName.Text = LG.getTeam(TID).getTeamName();
+            qb1Name.Text = LG.getTeam(TID).getPlayer(0).getName();
+            rb1Name.Text = LG.getTeam(TID).getPlayer(1).getName();
+            rb2Name.Text = LG.getTeam(TID).getPlayer(2).getName();
+            wr1Name.Text = LG.getTeam(TID).getPlayer(3).getName();
+            wr2Name.Text = LG.getTeam(TID).getPlayer(4).getName();
+            teName.Text = LG.getTeam(TID).getPlayer(5).getName();
+            flexName.Text = LG.getTeam(TID).getPlayer(6).getName();
+            dstName.Text = LG.getTeam(TID).getPlayer(7).getName();
+            kName.Text = LG.getTeam(TID).getPlayer(8).getName();
 
-            League LG = new League(lid, con);
-            //reader.Close();
-
-            teamName.Text = LG.getTeam(tid).getTeamName();
-            /*
-            qbName.Text = LG.getTeam(tid).getPlayer(0).getName();
-            rb1Name.Text = LG.getTeam(tid).getPlayer(1).getName();
-            rb2Name.Text = LG.getTeam(tid).getPlayer(2).getName();
-            wr1Name.Text = LG.getTeam(tid).getPlayer(3).getName();
-            wr2Name.Text = LG.getTeam(tid).getPlayer(4).getName();
-            teName.Text = LG.getTeam(tid).getPlayer(5).getName();
-            flexName.Text = LG.getTeam(tid).getPlayer(6).getName();
-            dstName.Text = LG.getTeam(tid).getPlayer(7).getName();
-            kName.Text = LG.getTeam(tid).getPlayer(8).getName();
-            */
         }
-        
-        private void but_Click(object sender, RoutedEventArgs e)
-        {
 
+        private void draft_Click(object sender, RoutedEventArgs e)
+        {
+            var page = new Draft(LG,TID);
+            page.Show();
+            this.Close();
         }
     }
 }

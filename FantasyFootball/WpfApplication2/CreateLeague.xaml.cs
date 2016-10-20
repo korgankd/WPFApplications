@@ -20,6 +20,7 @@ namespace WpfApplication2
     /// </summary>
     public partial class CreateLeague : Window
     {
+        League LG;
         public CreateLeague()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace WpfApplication2
         {
             int LID = nextLID();
             int TID = nextTID();
+            int thisTID = TID;
             string leagueName = "league" + LID;
             string rosterName = "L" + LID + "_Roster";
             string[] teamName = new string[10];
@@ -65,11 +67,15 @@ namespace WpfApplication2
             command = new SqlCommand(sql, con);
             reader = command.ExecuteReader();
             reader.Close();
+
+            
+
+            LG = new League(LID, con);
             con.Close();
 
             MessageBox.Show("League table entry added, LID_Roster table created.");
 
-            var page = new MyTeam(TID-9);
+            var page = new MyTeam(LG, thisTID);
             page.Show();
             this.Close();
         }

@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApplication2.Draft"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication2"
+        mc:Ignorable="d"
+        Title="Draft" Height="415" Width="415">
+    <Grid>
+        <Button Name="qb" Margin="10,0,350,345" Click="qb_Click">QB</Button>
+        <Button Name="rb" Margin="50,0,310,345" Click="rb_Click">RB</Button>
+        <Button Name="wr" Margin="90,0,270,345" Click="wr_Click">WR</Button>
+        <Button Name="te" Margin="130,0,230,345" Click="te_Click">TE</Button>
+        <Button Name="flex" Margin="170,0,190,345" Click="flex_Click">FLEX</Button>
+        <Button Name="dst" Margin="210,0,150,345" Click="dst_Click">DST</Button>
+        <Button Name="k" Margin="250,0,110,345" Click="k_Click">K</Button>
+
+        <ListBox Name="players" Margin="10,25,150,150" ItemsSource="{Binding}" 
+    ScrollViewer.VerticalScrollBarVisibility="Visible">
+
+        </ListBox>
+
+        <TextBlock Name="teamName" Margin="10,235,150,120">Team Name:</TextBlock>
+        <ListBox Name="roster" Margin="10,260,150,0" ItemsSource="{Binding}" 
+    ScrollViewer.VerticalScrollBarVisibility="Visible">
+
+        </ListBox>
+
+        <Button Name="draftSelected" Margin="325,50,10,295" Click="draftSelected_Click">
+            <TextBlock Width="60" Height="30">Draft<LineBreak/>Selected</TextBlock>
+        </Button>
+
+    </Grid>
+</Window>

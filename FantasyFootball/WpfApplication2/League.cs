@@ -7,8 +7,10 @@ using System.Data.SqlClient;
 
 namespace WpfApplication2
 {
-    class League
+    public class League
     {
+        int pickNum;
+        int[] draftOrder;
         string leagueName;
         int leagueID;
         Team[] teams = new Team[10];
@@ -28,16 +30,21 @@ namespace WpfApplication2
                 tids[i] = (int)reader.GetValue(1);
                 i++;
             }
+            draftOrder = setDraftOrder(tids[0]);
             reader.Close();
             for (i = 0; i < 10; i++)
             {
-                teams[i] = new Team(teamNames[i], tids[i], LID, con);
+                teams[i] = new Team(teamNames[i], tids[i], this, con);
             }
+
+            sql = "SELECT COUNT(*) FROM Rosters WHERE LID=" + leagueID + ";";
+            command = new SqlCommand(sql, con);
+            pickNum = (int)command.ExecuteScalar();
         }
 
         public Team getTeam(int tid)
         {
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 if (teams[i].getTID() == tid)
                 {
@@ -45,6 +52,52 @@ namespace WpfApplication2
                 }
             }
             return new Team("No Team");
+        }
+
+        public int getLID()
+        {
+            return leagueID;
+        }
+
+        public int[] setDraftOrder(int firstTID)
+        {
+            Boolean snake = false;  //true when snake drafting in decending order
+            int j = firstTID;
+            int[] pick = new int[150];
+            for (int i = 0; i < 150; i++)
+            {
+                pick[i] = j;
+
+                if (snake)
+                {
+                    j--;
+                }
+                else
+                {
+                    j++;
+                }
+                if (j == firstTID + 11)
+                {
+                    j--;
+                    snake = true;
+                }
+                else if (j == firstTID - 1)
+                {
+                    j++;
+                    snake = false;
+                }
+            }
+            return pick;
+        }
+
+        public int getPickNum()
+        {
+            return pickNum;
+        }
+
+        public int getPickTID()
+        {
+            return draftOrder[pickNum];
         }
     }
 }

@@ -22,6 +22,8 @@ namespace WpfApplication2
     /// </summary>
     public partial class MainWindow : Window
     {
+        League LG;
+        int TID = 0;
         public MainWindow()
         {
             InitializeComponent();
@@ -29,21 +31,24 @@ namespace WpfApplication2
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            int TID = 0;
+            int lid = 0;
             string userName = input1.Text;
             SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
             con.Open();
-            string sql = "SELECT TID FROM League WHERE UserName='" + userName +"';";
+            string sql = "SELECT TID,LID FROM League WHERE UserName='" + userName +"';";
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader reader = command.ExecuteReader();
             if (reader.Read())
             {
                 TID = (int)reader.GetValue(0);
+                lid = (int)reader.GetValue(1);
             }
             reader.Close();
+
+            LG = new League(lid, con);
             con.Close();
             
-            var page = new MyTeam(TID);
+            var page = new MyTeam(LG, TID);
             page.Show();
             this.Close();
         }

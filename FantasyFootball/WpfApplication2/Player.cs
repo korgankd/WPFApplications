@@ -7,25 +7,27 @@ using System.Data.SqlClient;
 
 namespace WpfApplication2
 {
-    class Player
+    public class Player
     {
         string _name;
         string _position;
+        Team tm;
 
         public Player()
         {
 
         }
-        public Player(string Name, string Position)
+        public Player(string Name, string Position, Team team)
         {
             _name = Name;
             _position = Position;
+            tm = team;
         }
         public string getName()
         {
             if (_name == null)
             {
-                return "empty";
+                return "Empty";
             }
             return _name;
         }

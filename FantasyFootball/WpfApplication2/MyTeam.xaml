@@ -19,15 +19,17 @@
         <TextBlock Margin="0,225,200,75">K:</TextBlock>
 
         <TextBlock Name="teamName" Margin="80,0,25,300"></TextBlock>
-        <TextBlock Name="qb1" Margin="80,25,25,275"></TextBlock>
-        <TextBlock Name="rb1" Margin="80,50,25,250"></TextBlock>
-        <TextBlock Name="rb2" Margin="80,75,25,225"></TextBlock>
-        <TextBlock Name="wr1" Margin="80,100,25,200"></TextBlock>
-        <TextBlock Name="wr2" Margin="80,125,25,175"></TextBlock>
-        <TextBlock Name="te" Margin="80,150,25,150"></TextBlock>
-        <TextBlock Name="flex" Margin="80,175,25,125"></TextBlock>
-        <TextBlock Name="dst" Margin="80,200,25,100"></TextBlock>
-        <TextBlock Name="k" Margin="80,225,25,75"></TextBlock>
+        <TextBlock Name="qb1Name" Margin="80,25,25,275"></TextBlock>
+        <TextBlock Name="rb1Name" Margin="80,50,25,250"></TextBlock>
+        <TextBlock Name="rb2Name" Margin="80,75,25,225"></TextBlock>
+        <TextBlock Name="wr1Name" Margin="80,100,25,200"></TextBlock>
+        <TextBlock Name="wr2Name" Margin="80,125,25,175"></TextBlock>
+        <TextBlock Name="teName" Margin="80,150,25,150"></TextBlock>
+        <TextBlock Name="flexName" Margin="80,175,25,125"></TextBlock>
+        <TextBlock Name="dstName" Margin="80,200,25,100"></TextBlock>
+        <TextBlock Name="kName" Margin="80,225,25,75"></TextBlock>
+
+        <Button Name="draft" Click="draft_Click" Margin="80,250,25,50">DRAFT</Button>
 
     </Grid>
 </Window>

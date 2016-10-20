@@ -58,6 +58,9 @@
     <Compile Include="CreateLeague.xaml.cs">
       <DependentUpon>CreateLeague.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Draft.xaml.cs">
+      <DependentUpon>Draft.xaml</DependentUpon>
+    </Compile>
     <Compile Include="League.cs" />
     <Compile Include="MyTeam.xaml.cs">
       <DependentUpon>MyTeam.xaml</DependentUpon>
@@ -68,6 +71,10 @@
     <Compile Include="Player.cs" />
     <Compile Include="Team.cs" />
     <Page Include="CreateLeague.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Draft.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
