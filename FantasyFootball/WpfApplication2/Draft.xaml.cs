@@ -22,7 +22,6 @@ namespace WpfApplication2
             InitializeComponent();
             LG = lg;
             TID = lg.getPickTID();
-            int[] x = LG.setDraftOrder(2);
             fillTeam();
         }
 
@@ -35,7 +34,7 @@ namespace WpfApplication2
             {
                 if (LG.getTeam(TID).getPlayer(i).getName() != "Empty")
                 {
-                    listitems = LG.getTeam(TID).getPlayer(i).getName();
+                    listitems = LG.getTeam(TID).getPlayer(i).getPosition() + " - " + LG.getTeam(TID).getPlayer(i).getName();
                     t.Add(listitems);
                 }
             }
@@ -48,7 +47,8 @@ namespace WpfApplication2
             string listitems = "";
             SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
             con.Open();
-            string sql = "SELECT Name, Position FROM Players WHERE Position='QB' ORDER BY Name;";
+            string sql = "SELECT Name, Position FROM Players WHERE Position='QB' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
+            
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -66,7 +66,7 @@ namespace WpfApplication2
             string listitems = "";
             SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
             con.Open();
-            string sql = "SELECT Name, Position FROM Players WHERE Position='RB' ORDER BY Name;";
+            string sql = "SELECT Name, Position FROM Players WHERE Position='RB' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -85,7 +85,7 @@ namespace WpfApplication2
             string listitems = "";
             SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
             con.Open();
-            string sql = "SELECT Name, Position FROM Players WHERE Position='WR' ORDER BY Name;";
+            string sql = "SELECT Name, Position FROM Players WHERE Position='WR' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -104,7 +104,7 @@ namespace WpfApplication2
             string listitems = "";
             SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
             con.Open();
-            string sql = "SELECT Name, Position FROM Players WHERE Position='TE' ORDER BY Name;";
+            string sql = "SELECT Name, Position FROM Players WHERE Position='TE' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -124,24 +124,51 @@ namespace WpfApplication2
 
         private void dst_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Object> t = new ObservableCollection<Object>();
+            string listitems = "";
+            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
+            con.Open();
+            string sql = "SELECT Name, Position FROM Players WHERE Position='DST' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
+
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listitems = reader.GetValue(1) + " - " + reader.GetValue(0);
+                t.Add(listitems);
+            }
+            reader.Close();
+            players.ItemsSource = t;
 
         }
 
         private void k_Click(object sender, RoutedEventArgs e)
         {
-
+            ObservableCollection<Object> t = new ObservableCollection<Object>();
+            string listitems = "";
+            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
+            con.Open();
+            string sql = "SELECT Name, Position FROM Players WHERE Position='K' ORDER BY Name;";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listitems = reader.GetValue(1) + " - " + reader.GetValue(0);
+                t.Add(listitems);
+            }
+            reader.Close();
+            players.ItemsSource = t;
         }
 
         private void draftSelected_Click(object sender, RoutedEventArgs e)
         {
             int pid = 0;
             string[] pi = players.SelectedItem.ToString().Split(' '); //pos, -, name
-            Player p = new Player(pi[0], pi[2], LG.getTeam(TID));
+            string playerName = pi[2] + " " + pi[3];
+            Player p = new Player(playerName, pi[0], LG.getTeam(TID));
 
             if (LG.getTeam(TID).draftPlayer(p))
             {
-                //players.Items.Remove(players.SelectedItem);
-                string playerName = pi[2] + " " + pi[3];
                 //sql
                 SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
                 con.Open();
@@ -154,14 +181,10 @@ namespace WpfApplication2
                 }
                 reader.Close();
 
-                sql = "INSERT INTO Rosters (TID, FTeamName, PID, PlayerName, Position) VALUES (";
-                sql += TID + ",'" + LG.getTeam(TID).getTeamName() + "'," + pid + ",'" + playerName + "','" + pi[0] + "');";
+                sql = "INSERT INTO Rosters (LID, TID, FTeamName, PID, PlayerName, Position) VALUES (";
+                sql += LG.getLID() + "," + TID + ",'" + LG.getTeam(TID).getTeamName() + "'," + pid + ",'" + playerName + "','" + pi[0] + "');";
                 command = new SqlCommand(sql, con);
                 reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    MessageBox.Show("Drafted Player Successful");
-                }
                 reader.Close();
                 TID = LG.getPickTID();
                 fillTeam();

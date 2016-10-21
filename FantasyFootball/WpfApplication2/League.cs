@@ -37,7 +37,7 @@ namespace WpfApplication2
                 teams[i] = new Team(teamNames[i], tids[i], this, con);
             }
 
-            sql = "SELECT COUNT(*) FROM Rosters;";
+            sql = "SELECT COUNT(*) FROM Rosters WHERE LID=" + LID + ";";
             command = new SqlCommand(sql, con);
             pickNum = (int)command.ExecuteScalar();
         }

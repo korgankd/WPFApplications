@@ -31,5 +31,14 @@ namespace WpfApplication2
             }
             return _name;
         }
+
+        public string getPosition()
+        {
+            if (_position == null)
+            {
+                return "Empty";
+            }
+            return _position;
+        }
     }
 }
