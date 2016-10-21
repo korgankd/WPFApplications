@@ -10,15 +10,7 @@ Current:
 - Draft page hides players alread on a roster in that league.
 
 Future:
-
-Fix:
-- Draft Page refresh available players on draft selected button
-- Remove Roster tables when creating league, all league rosters will be in one table
-- Remove delete table button
-- Draft Page do nothing on click_draftSelected button when no player is selected
 - Comment methods
-
-Add:
 - Draft Page flex button
 - Draft Page data grid with sorting for available players
 - My Team page change teams with dropdown arrow box
