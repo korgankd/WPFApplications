@@ -119,6 +119,22 @@ namespace WpfApplication2
 
         private void flex_Click(object sender, RoutedEventArgs e)
         {
+            ObservableCollection<Object> t = new ObservableCollection<Object>();
+            string listitems = "";
+            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
+            con.Open();
+            string sql = "SELECT Name, Position FROM Players WHERE Position='RB' OR Position='WR' ";
+            sql += "OR Position='TE' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
+
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listitems = reader.GetValue(1) + " - " + reader.GetValue(0);
+                t.Add(listitems);
+            }
+            reader.Close();
+            players.ItemsSource = t;
 
         }
 
@@ -163,6 +179,10 @@ namespace WpfApplication2
         private void draftSelected_Click(object sender, RoutedEventArgs e)
         {
             int pid = 0;
+            if (players.SelectedItem == null)
+            {
+                return;
+            }
             string[] pi = players.SelectedItem.ToString().Split(' '); //pos, -, name
             string playerName = pi[2] + " " + pi[3];
             Player p = new Player(playerName, pi[0], LG.getTeam(TID));
@@ -188,6 +208,7 @@ namespace WpfApplication2
                 reader.Close();
                 TID = LG.getPickTID();
                 fillTeam();
+                this.qb_Click(sender, e);
             }
             else
                 MessageBox.Show("Drafted Player Unsuccessful");

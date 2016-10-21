@@ -11,14 +11,21 @@ Current:
 
 Future:
 
+Fix:
+- Draft Page refresh available players on draft selected button
+- Remove Roster tables when creating league, all league rosters will be in one table
+- Remove delete table button
+- Draft Page do nothing on click_draftSelected button when no player is selected
+- Comment methods
+
 Add:
 - Draft Page flex button
 - Draft Page data grid with sorting for available players
 - My Team page change teams with dropdown arrow box
 - My Team bench slots
-- My Teeam players match appropriate position slots
-- Draft Page refresh available players on draft selected button
-- Remove Roster tables when creating league, all league rosters will be in one table
-- Remove dlelete table button
-- Draft Page do nothing on click_draftSelected button when no player is selected
-- Comment methods
+- My Team players match appropriate position slots
+- Player stats and scoring
+- Matchups
+- Team schedules
+- Free agent player list
+- Add/Drop/Trade players

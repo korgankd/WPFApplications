@@ -10,8 +10,7 @@
         <TextBox Name="input1">Newuser</TextBox>
         <Button Name="login" Click="login_Click">Login</Button>
         <Button Name="createLeague" Click="createLeague_Click" >Create League</Button>
-        <Button Name="clearLeagueTable" Click="clearLeagueTable_Click">Clear League Table</Button>
-    </StackPanel>
+            </StackPanel>
     
     
 </Window>

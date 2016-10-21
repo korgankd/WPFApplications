@@ -63,18 +63,9 @@ namespace WpfApplication2
                 reader.Close();
                 TID++;
             }
-            sql = "CREATE TABLE "+rosterName+"(TID int, FTeamName nvarchar(50), PID int, PlayerName nvarchar(50), Position nvarchar(50));";
-            command = new SqlCommand(sql, con);
-            reader = command.ExecuteReader();
-            reader.Close();
-
-            
 
             LG = new League(LID, con);
             con.Close();
-
-            MessageBox.Show("League table entry added, LID_Roster table created.");
-
             var page = new MyTeam(LG, thisTID);
             page.Show();
             this.Close();
@@ -87,13 +78,8 @@ namespace WpfApplication2
             con.Open();
             string sql = "SELECT MAX(LID) FROM League;";
             SqlCommand command = new SqlCommand(sql, con);
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
-            {
-                nextLID = (int)reader.GetValue(0);
-                nextLID++;
-            }
-            reader.Close();
+            nextLID = (int)command.ExecuteScalar();
+            nextLID++;
             con.Close();
             return nextLID;
         }
@@ -104,13 +90,8 @@ namespace WpfApplication2
             con.Open();
             string sql = "SELECT MAX(TID) FROM League;";
             SqlCommand command = new SqlCommand(sql, con);
-            SqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
-            {
-                nextTID = (int)reader.GetValue(0);
-                nextTID++;
-            }
-            reader.Close();
+            nextTID = (int)command.ExecuteScalar();
+            nextTID++;
             con.Close();
             return nextTID;
         }

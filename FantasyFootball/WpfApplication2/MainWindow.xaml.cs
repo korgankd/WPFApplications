@@ -59,16 +59,5 @@ namespace WpfApplication2
             page.Show();
             this.Close();
         }
-
-        private void clearLeagueTable_Click(object sender, RoutedEventArgs e)
-        {
-            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
-            con.Open();
-            string sql = "TRUNCATE TABLE League;";
-            SqlCommand command = new SqlCommand(sql, con);
-            SqlDataReader reader = command.ExecuteReader();
-            reader.Close();
-            con.Close();
-        }
     }
 }
