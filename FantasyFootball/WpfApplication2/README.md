@@ -11,7 +11,6 @@ Current:
 
 Future:
 - Comment methods
-- Draft Page flex button
 - Draft Page data grid with sorting for available players
 - My Team page change teams with dropdown arrow box
 - My Team bench slots

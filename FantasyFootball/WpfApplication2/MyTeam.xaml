@@ -5,31 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication2"
         mc:Ignorable="d"
-        Title="MyTeam" Height="360" Width="300">
+        Title="MyTeam" Height="500" Width="350">
     <Grid>
-        <TextBlock Margin="0,0,210,300">Team Name:</TextBlock>
-        <TextBlock Margin="0,25,200,275">QB:</TextBlock>
-        <TextBlock Margin="0,50,200,250">RB1:</TextBlock>
-        <TextBlock Margin="0,75,200,225">RB2:</TextBlock>
-        <TextBlock Margin="0,100,200,200">WR1:</TextBlock>
-        <TextBlock Margin="0,125,200,175">WR2:</TextBlock>
-        <TextBlock Margin="0,150,200,150">TE:</TextBlock>
-        <TextBlock Margin="0,175,200,125">FLEX:</TextBlock>
-        <TextBlock Margin="0,200,200,100">DST:</TextBlock>
-        <TextBlock Margin="0,225,200,75">K:</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Row="2" Grid.Column="2" Grid.RowSpan="2" Name="draft" Click="draft_Click">DRAFT</Button>
 
-        <TextBlock Name="teamName" Margin="80,0,25,300"></TextBlock>
-        <TextBlock Name="qb1Name" Margin="80,25,25,275"></TextBlock>
-        <TextBlock Name="rb1Name" Margin="80,50,25,250"></TextBlock>
-        <TextBlock Name="rb2Name" Margin="80,75,25,225"></TextBlock>
-        <TextBlock Name="wr1Name" Margin="80,100,25,200"></TextBlock>
-        <TextBlock Name="wr2Name" Margin="80,125,25,175"></TextBlock>
-        <TextBlock Name="teName" Margin="80,150,25,150"></TextBlock>
-        <TextBlock Name="flexName" Margin="80,175,25,125"></TextBlock>
-        <TextBlock Name="dstName" Margin="80,200,25,100"></TextBlock>
-        <TextBlock Name="kName" Margin="80,225,25,75"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0">Team Name:</TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0">QB:</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0">RB1:</TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0">RB2:</TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0">WR1:</TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0">WR2:</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0">TE:</TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="0">FLEX:</TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="0">DST:</TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="0">K:</TextBlock>
 
-        <Button Name="draft" Click="draft_Click" Margin="80,250,25,50">DRAFT</Button>
+        <ComboBox Grid.Row="0" Grid.Column="1" Name="teamName" Text="Team Name 1">
+            
+        </ComboBox>
+        <TextBlock Grid.Row="1" Grid.Column="1" Name="qb1Name">qb1Name</TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Name="rb1Name"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Name="rb2Name"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" Name="wr1Name"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1" Name="wr2Name">Wr2</TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="1" Name="teName"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column="1" Name="flexName"></TextBlock>
+        <TextBlock Grid.Row="8" Grid.Column="1" Name="dstName"></TextBlock>
+        <TextBlock Grid.Row="9" Grid.Column="1" Name="kName"></TextBlock>
+
 
     </Grid>
 </Window>

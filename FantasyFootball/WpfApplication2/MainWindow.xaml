@@ -5,12 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <StackPanel>
-        <TextBox Name="input1">Newuser</TextBox>
-        <Button Name="login" Click="login_Click">Login</Button>
-        <Button Name="createLeague" Click="createLeague_Click" >Create League</Button>
-            </StackPanel>
+        Title="MainWindow" Height="500" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="70"/>
+        </Grid.ColumnDefinitions>
+        
+        <TextBox Grid.Column="1" Grid.Row="1" Name="input1">Newuser</TextBox>
+        <Button Grid.Column="1" Grid.Row="2" Name="login" Click="login_Click">Login</Button>
+        <Button Grid.Column="1" Grid.Row="3" Name="createLeague" Click="createLeague_Click" >Create League</Button>
+    </Grid>
     
     
 </Window>

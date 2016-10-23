@@ -213,5 +213,10 @@ namespace WpfApplication2
             else
                 MessageBox.Show("Drafted Player Unsuccessful");
         }
+
+        private void all_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

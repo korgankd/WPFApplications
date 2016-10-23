@@ -5,30 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication2"
         mc:Ignorable="d"
-        Title="Draft" Height="415" Width="415">
+        Title="Draft" Height="500" Width="350">
     <Grid>
-        <Button Name="qb" Margin="10,0,350,345" Click="qb_Click">QB</Button>
-        <Button Name="rb" Margin="50,0,310,345" Click="rb_Click">RB</Button>
-        <Button Name="wr" Margin="90,0,270,345" Click="wr_Click">WR</Button>
-        <Button Name="te" Margin="130,0,230,345" Click="te_Click">TE</Button>
-        <Button Name="flex" Margin="170,0,190,345" Click="flex_Click">FLEX</Button>
-        <Button Name="dst" Margin="210,0,150,345" Click="dst_Click">DST</Button>
-        <Button Name="k" Margin="250,0,110,345" Click="k_Click">K</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <ListBox Name="players" Margin="10,25,150,150" ItemsSource="{Binding}" 
-    ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <Button Grid.Column="0" Grid.Row="2" Name="all" Click="all_Click">All</Button>
+        <Button Grid.Column="1" Grid.Row="2" Name="qb" Click="qb_Click">QB</Button>
+        <Button Grid.Column="2" Grid.Row="2" Name="rb" Click="rb_Click">RB</Button>
+        <Button Grid.Column="3" Grid.Row="2" Name="wr" Click="wr_Click">WR</Button>
+        <Button Grid.Column="4" Grid.Row="2" Name="te" Click="te_Click">TE</Button>
+        <Button Grid.Column="5" Grid.Row="2" Name="flex" Click="flex_Click">FLEX</Button>
+        <Button Grid.Column="6" Grid.Row="2" Name="dst" Click="dst_Click">DST</Button>
+        <Button Grid.Column="7" Grid.Row="2" Name="k" Click="k_Click">K</Button>
 
-        </ListBox>
+        <ListBox Name="players" Grid.Column="0" Grid.Row="3" Grid.RowSpan="3" Grid.ColumnSpan="8" ItemsSource="{Binding}" 
+            ScrollViewer.VerticalScrollBarVisibility="Visible"></ListBox>
+        <Button Grid.Column="6" Grid.Row="6" Grid.ColumnSpan="2" Name="draftSelected" Click="draftSelected_Click">Draft Selected</Button>
 
-        <TextBlock Name="teamName" Margin="10,235,150,120">Team Name:</TextBlock>
-        <ListBox Name="roster" Margin="10,260,150,0" ItemsSource="{Binding}" 
-    ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <GridSplitter Grid.Row="6" VerticalAlignment="Top" Height="3" />
 
-        </ListBox>
-
-        <Button Name="draftSelected" Margin="325,50,10,295" Click="draftSelected_Click">
-            <TextBlock Width="60" Height="30">Draft<LineBreak/>Selected</TextBlock>
-        </Button>
+        <Grid Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="6" Grid.RowSpan="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" Grid.Row="0" Name="teamName">Team Name:</TextBlock>
+            <ListBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Name="roster" ItemsSource="{Binding}" 
+                ScrollViewer.VerticalScrollBarVisibility="Visible">
+            </ListBox>
+        </Grid>
 
     </Grid>
 </Window>
