@@ -9,7 +9,7 @@ namespace WpfApplication2
 {
     public class Team
     {
-        string leagueName, teamName;
+        string teamName;
         int LID, TID;
         Player QB, RB1, RB2, WR1, WR2, TE, FLEX, DST, K;
         Player[] bench = new Player[6];

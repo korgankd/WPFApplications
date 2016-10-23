@@ -11,7 +11,6 @@ namespace WpfApplication2
     {
         int pickNum;
         int[] draftOrder;
-        string leagueName;
         int leagueID;
         Team[] teams = new Team[10];
 
@@ -102,6 +101,23 @@ namespace WpfApplication2
         public void playerDrafted()
         {
             pickNum++;
+        }
+
+        public Team getTeamByIndex(int index)
+        {
+            return teams[index];
+        }
+
+        public Team getTeamByTeamName(string tName)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                if (teams[i].getTeamName() == tName)
+                {
+                    return teams[i];
+                }
+            }
+            return new Team("No Team");
         }
     }
 }

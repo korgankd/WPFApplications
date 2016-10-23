@@ -43,7 +43,16 @@
         <TextBlock Grid.Row="9" Grid.Column="0">K:</TextBlock>
 
         <ComboBox Grid.Row="0" Grid.Column="1" Name="teamName" Text="Team Name 1">
-            
+            <ComboBoxItem Selected="team1_Selected" Name="team1">Team1</ComboBoxItem>
+            <ComboBoxItem Selected="team2_Selected" Name="team2">Team2</ComboBoxItem>
+            <ComboBoxItem Selected="team3_Selected" Name="team3">Team3</ComboBoxItem>
+            <ComboBoxItem Selected="team4_Selected" Name="team4">Team4</ComboBoxItem>
+            <ComboBoxItem Selected="team5_Selected" Name="team5">Team5</ComboBoxItem>
+            <ComboBoxItem Selected="team6_Selected" Name="team6">Team6</ComboBoxItem>
+            <ComboBoxItem Selected="team7_Selected" Name="team7">Team7</ComboBoxItem>
+            <ComboBoxItem Selected="team8_Selected" Name="team8">Team8</ComboBoxItem>
+            <ComboBoxItem Selected="team9_Selected" Name="team9">Team9</ComboBoxItem>
+            <ComboBoxItem Selected="team10_Selected" Name="team10">Team10</ComboBoxItem>
         </ComboBox>
         <TextBlock Grid.Row="1" Grid.Column="1" Name="qb1Name">qb1Name</TextBlock>
         <TextBlock Grid.Row="2" Grid.Column="1" Name="rb1Name"></TextBlock>

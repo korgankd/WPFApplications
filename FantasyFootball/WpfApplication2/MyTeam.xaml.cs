@@ -20,7 +20,6 @@ namespace WpfApplication2
     /// </summary>
     public partial class MyTeam : Window
     {
-        int LID = 0;
         int TID = 0;
         League LG;
         public MyTeam()
@@ -48,7 +47,6 @@ namespace WpfApplication2
             flexName.Text = LG.getTeam(TID).getPlayer(6).getName();
             dstName.Text = LG.getTeam(TID).getPlayer(7).getName();
             kName.Text = LG.getTeam(TID).getPlayer(8).getName();
-
         }
 
         private void draft_Click(object sender, RoutedEventArgs e)
@@ -56,6 +54,65 @@ namespace WpfApplication2
             var page = new Draft(LG);
             page.Show();
             this.Close();
+        }
+
+        private void team1_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(0).getTID();
+            fillTeam();
+        }
+
+        private void team2_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(1).getTID();
+            fillTeam();
+        }
+        private void team3_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(2).getTID();
+            fillTeam();
+        }
+
+        private void team4_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(3).getTID();
+            fillTeam();
+        }
+
+        private void team5_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(4).getTID();
+            fillTeam();
+        }
+
+        private void team6_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(5).getTID();
+            fillTeam();
+        }
+
+        private void team7_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(6).getTID();
+            fillTeam();
+        }
+
+        private void team8_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(7).getTID();
+            fillTeam();
+        }
+
+        private void team9_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(8).getTID();
+            fillTeam();
+        }
+
+        private void team10_Selected(object sender, RoutedEventArgs e)
+        {
+            TID = LG.getTeamByIndex(9).getTID();
+            fillTeam();
         }
     }
 }
