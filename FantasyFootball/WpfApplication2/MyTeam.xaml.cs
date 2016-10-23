@@ -38,15 +38,21 @@ namespace WpfApplication2
         public void fillTeam()
         {
             teamName.Text = LG.getTeam(TID).getTeamName();
-            qb1Name.Text = LG.getTeam(TID).getPlayer(0).getName();
-            rb1Name.Text = LG.getTeam(TID).getPlayer(1).getName();
-            rb2Name.Text = LG.getTeam(TID).getPlayer(2).getName();
-            wr1Name.Text = LG.getTeam(TID).getPlayer(3).getName();
-            wr2Name.Text = LG.getTeam(TID).getPlayer(4).getName();
-            teName.Text = LG.getTeam(TID).getPlayer(5).getName();
-            flexName.Text = LG.getTeam(TID).getPlayer(6).getName();
-            dstName.Text = LG.getTeam(TID).getPlayer(7).getName();
-            kName.Text = LG.getTeam(TID).getPlayer(8).getName();
+            qb1Name.Text = LG.getTeam(TID).getQB().getName();
+            rb1Name.Text = LG.getTeam(TID).getRB1().getName();
+            rb2Name.Text = LG.getTeam(TID).getRB2().getName();
+            wr1Name.Text = LG.getTeam(TID).getWR1().getName();
+            wr2Name.Text = LG.getTeam(TID).getWR2().getName();
+            teName.Text = LG.getTeam(TID).getTE().getName();
+            flexName.Text = LG.getTeam(TID).getFLEX().getName();
+            dstName.Text = LG.getTeam(TID).getDST().getName();
+            kName.Text = LG.getTeam(TID).getK().getName();
+            bench1.Text = LG.getTeam(TID).getBench(0).getName();
+            bench2.Text = LG.getTeam(TID).getBench(1).getName();
+            bench3.Text = LG.getTeam(TID).getBench(2).getName();
+            bench4.Text = LG.getTeam(TID).getBench(3).getName();
+            bench5.Text = LG.getTeam(TID).getBench(4).getName();
+            bench6.Text = LG.getTeam(TID).getBench(5).getName();
         }
 
         private void draft_Click(object sender, RoutedEventArgs e)

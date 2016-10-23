@@ -41,6 +41,26 @@ namespace WpfApplication2
             roster.ItemsSource = t;
         }
         
+        private void all_Click(object sender, RoutedEventArgs e)
+        {
+            ObservableCollection<Object> t = new ObservableCollection<Object>();
+            string listitems = "";
+            SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
+            con.Open();
+            string sql = "SELECT Name, Position FROM Players WHERE Position='QB' OR Position='RB' OR Position='WR' OR Position='TE' ";
+            sql += "OR Position='DST' OR Position='K' AND Name NOT IN (SELECT PlayerName FROM Rosters WHERE LID=" + LG.getLID() + ");";
+
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                listitems = reader.GetValue(1) + " - " + reader.GetValue(0);
+                t.Add(listitems);
+            }
+            reader.Close();
+            players.ItemsSource = t;
+        }
+
         private void qb_Click(object sender, RoutedEventArgs e)
         {
             ObservableCollection<Object> t = new ObservableCollection<Object>();
@@ -189,6 +209,7 @@ namespace WpfApplication2
 
             if (LG.getTeam(TID).draftPlayer(p))
             {
+                int posIndex = LG.getTeam(TID).setPosition(p);
                 //sql
                 SqlConnection con = new SqlConnection("Data Source=localhost\\SQLEXPRESS;Initial Catalog=KentDatabase;Integrated Security=SSPI");
                 con.Open();
@@ -201,22 +222,18 @@ namespace WpfApplication2
                 }
                 reader.Close();
 
-                sql = "INSERT INTO Rosters (LID, TID, FTeamName, PID, PlayerName, Position) VALUES (";
-                sql += LG.getLID() + "," + TID + ",'" + LG.getTeam(TID).getTeamName() + "'," + pid + ",'" + playerName + "','" + pi[0] + "');";
+                sql = "INSERT INTO Rosters (LID, TID, FTeamName, PID, PlayerName, Position, PositionIndex) VALUES (";
+                sql += LG.getLID() + "," + TID + ",'" + LG.getTeam(TID).getTeamName() + "'," + pid + ",'" + playerName + "','" + pi[0] + "'," + posIndex + ");";
                 command = new SqlCommand(sql, con);
                 reader = command.ExecuteReader();
                 reader.Close();
                 TID = LG.getPickTID();
                 fillTeam();
-                this.qb_Click(sender, e);
+                this.all_Click(sender, e);
             }
             else
                 MessageBox.Show("Drafted Player Unsuccessful");
         }
 
-        private void all_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
