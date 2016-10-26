@@ -12,6 +12,8 @@ Current:
 - My Team bench slots
 
 Future:
+- auto draft (testing purposes)
+- change lineup
 - Comment methods
 - Draft Page data grid with sorting for available players
 - Player stats and scoring
